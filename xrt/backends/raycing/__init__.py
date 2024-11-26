@@ -1167,7 +1167,8 @@ class BeamLine(object):
                 self.beamsDict[str(list(segment[3].values())[0])] = outBeams
 
     def glow(self, scale=[], centerAt='', startFrom=0, colorAxis=None,
-             colorAxisLimits=None, generator=None, generatorArgs=[]):
+             colorAxisLimits=None, generator=None, generatorArgs=[],
+             exit_on_close=True):
         if generator is not None:
             gen = generator(*generatorArgs)
             try:
@@ -1224,7 +1225,8 @@ class BeamLine(object):
                     pass
 
             self.blViewer.show()
-            sys.exit(app.exec_())
+            if exit_on_close:
+                sys.exit(app.exec_())
         else:
             self.blViewer.show()
 
